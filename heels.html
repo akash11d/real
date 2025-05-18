@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heels - Emil Fashion</title>
+  <link rel="stylesheet" href="style.css" />
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #fff;
+}
+
+/* HEADER STYLE */
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: linear-gradient(to right, #dd3777, #f82e9d);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: #030303;
+}
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #000000;
+  border-radius: 5px;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  background-color: #333;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: 0.3s;
+  border: 0.5px solid #444;
+}
+
+.nav-links a:hover {
+  background-color: #000000;
+  color: #fff;
+  border-color: #000000;
+}
+
+/* BELOW MENU TEXT */
+.below-menu {
+  background-color: #fff0f5;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #444;
+  border-bottom: 1px solid #eee;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #fff0f5;
+    display: none;
+    padding: 10px 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-links a {
+    background-color: transparent;
+    color: #000000;
+    font-size: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+
+
+
+</style>
+
+ <header class="nav-header">
+    <div class="brand">👠 Emil Fashion</div>
+    
+    <!-- Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <!-- Nav Links -->
+    <nav class="nav-links" id="navMenu">
+      <a href="index.html">🏠 Home</a>
+      <a href="halfpump">👞 Half PUMPIS </a>
+      <a href="cart.html">🛒 Cart</a>
+    </nav>
+  </header>
+    
+
+
+  <div class="product-grid">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="hells/hell1.jpg" alt="Heel 1">
+      <h3>Stylish Heel</h3>
+      <h3>999 tk</h3>
+      <p>Elegant design with modern touch for any occasion.</p>
+      <a href="buy-now.html?image=hells/hell1.jpg&name=Stylish%20Heel&price=1200" class="buy-button" target="_blank">Buy Now</a>
+      <a href="hells/hell1.jpg" class="view-button" target="_blank">View Product</a>
+       <!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'hells/hell1.jpg', )" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="hells/hell2.jpg" alt="Heel 2">
+      <h3>Classic Heel</h3>
+      <p>Elegant design with modern touch for any occasion.</p>
+      <a href="buy-now.html?image=hells/hell2.jpg&name=Classic%20Heel&price=1200" class="buy-button" target="_blank">Buy Now</a>
+      <a href="hells/hell2.jpg" class="view-button" target="_blank">View Product</a>
+       <!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'hells/hell2.jpg', 999)" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <img src="hells/hell3.jpg" alt="Heel 3">
+      <h3>Fancy Heel</h3>
+      <p>Elegant design with modern touch for any occasion.</p>
+      <a href="buy-now.html?image=hells/hell3.jpg&name=Fancy%20Heel&price=1200" class="buy-button" target="_blank">Buy Now</a>
+      <a href="hells/hell3.jpg" class="view-button" target="_blank">View Product</a>
+       <!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'hells/hell3.jpg', 999)" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+
+    </div>
+     <!-- Product 4 -->
+    <div class="product-card">
+      <img src="hells/hell4.jpg" alt="Heel 3">
+      <h3>Fancy Heel</h3>
+      <p>Elegant design with modern touch for any occasion.</p>
+      <a href="buy-now.html?image=hells/hell4.jpg&name=Fancy%20Heel&price=1200" class="buy-button" target="_blank">Buy Now</a>
+      <a href="hells/hell4.jpg" class="view-button" target="_blank">View Product</a>
+    </div>
+     <!-- Product 5 -->
+    <div class="product-card">
+      <img src="hells/hell5.jpg" alt="Heel 3">
+      <h3>Fancy Heel</h3>
+      <p>Elegant design with modern touch for any occasion.</p>
+      <a href="buy-now.html?image=hells/hell5.jpg&name=Fancy%20Heel&price=1200" class="buy-button" target="_blank">Buy Now</a>
+      <a href="hells/hell5.jpg" class="view-button" target="_blank">View Product</a>
+    </div>
+     <!-- Product 6 -->
+    <div class="product-card">
+      <img src="hells/hell6.jpg" alt="Heel 3">
+      <h3>Fancy Heel</h3>
+      <p>Elegant design with modern touch for any occasion.</p>
+      <a href="buy-now.html?image=hells/hell6.jpg&name=Fancy%20Heel&price=1200" class="buy-button" target="_blank">Buy Now</a>
+      <a href="hells/hell6.jpg" class="view-button" target="_blank">View Product</a>
+    </div>
+     
+<script src="script.js"></script>
+<script>
+  function addToCart(name, image, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if product already exists
+    const existingProduct = cart.find(item => item.name === name && item.image === image);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({ name, image, price, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+</script>
+
+</body>
+</html>

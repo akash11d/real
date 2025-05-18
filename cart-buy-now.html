@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Emil Fashion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    .cart-container {
+      max-width: 900px;
+      margin: auto;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      padding: 15px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .cart-item img {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+    .cart-details {
+      flex: 1;
+    }
+    .cart-details h3 {
+      margin: 0;
+    }
+    .cart-details p {
+      margin: 5px 0;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .quantity-control input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+    }
+    .remove-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .total-section {
+      max-width: 900px;
+      margin: 20px auto;
+      text-align: right;
+    }
+    .total-price {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .buy-btn {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Your Cart - Emil Fashion</h1>
+  <div class="cart-container" id="cartContainer"></div>
+
+  <div class="total-section">
+    <div class="total-price" id="totalPrice">Total: ৳0</div>
+    <button class="buy-btn" onclick="proceedToBuy()">Proceed to Buy</button>
+  </div>
+
+  <script>
+    function loadCart() {
+      const cartContainer = document.getElementById('cartContainer');
+      const totalPriceElem = document.getElementById('totalPrice');
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      cartContainer.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-details">
+            <h3>${item.name}</h3>
+            <p>Price: ৳${item.price}</p>
+            <div class="quantity-control">
+              Quantity:
+              <input type="number" min="1" value="${item.quantity}" onchange="updateQuantity(${index}, this.value)">
+              <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            </div>
+            <p>Subtotal: ৳${itemTotal}</p>
+          </div>
+        `;
+        cartContainer.appendChild(cartItem);
+      });
+
+      totalPriceElem.textContent = `Total: ৳${total}`;
+    }
+
+    function updateQuantity(index, newQty) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart[index].quantity = parseInt(newQty);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    function proceedToBuy() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      window.location.href = 'cart-buy-now.html';
+    }
+
+    window.onload = loadCart;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emil Fashion</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">EMIL FASHION</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav>
+        <ul role="menu" id="menu">
+          <li role="menuitem"><a href="#home">Home</a></li>
+          <li class="dropdown" role="menuitem">
+            <a href="#">Products ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="heels.html" target="_blank">Heel chandelier</a></li>
+              <li><a href="loafer.html" target="_blank">Loafers</a></li>
+              <li><a href="pump.html" target="_blank">Pumpis</a></li>
+            </ul>
+          </li>
+         <li> <a href="cart.html">🛒 Cart</a></li>
+
+      
+          <li>
+            <a href="https://wa.me/8801835165387" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+  </header>
+  
+
+
+  <section class="hero" id="home" aria-label="Hero section">
+    <div class="hero-content" role="banner">
+      <h1>Step Into Style</h1>
+      <p>Discover the elegance and comfort of women's shoes with EMIL FASHION.</p>
+      <a href="#products" class="button">Shop Now</a>
+    </div>
+  </section>
+
+  <section id="products">
+    <h2 class="section-title">Our Collection</h2>
+    <div class="products-grid">
+
+<!-- Product 1-->
+ <div class="product-card">
+  <img src="image/AKASH1.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <!-- Buy Now Button -->
+  <a href="buy-now.html?image=image/AKASH1.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <!-- View Product Button -->
+  <a href="image/AKASH1.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+<!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'image/AKASH1.jpg', 999)" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+
+ 
+</div>
+
+
+
+<!-- Product 2-->
+ <div class="product-card">
+  <img src="image/AKASH2.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <!-- Buy Now Button -->
+  <a href="buy-now.html?image=image/AKASH2.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <!-- View Product Button -->
+  <a href="image/AKASH2.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+<!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'image/AKASH2.jpg', 999)" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+
+  
+</div>
+
+
+
+ <!-- Product 3-->
+ <div class="product-card">
+  <img src="image/AKASH3.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <!-- Buy Now Button -->
+  <a href="buy-now.html?image=image/AKASH3.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <!-- View Product Button -->
+  <a href="image/AKASH3.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+<!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'image/AKASH3.jpg', 999)" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+
+</div>
+
+
+
+<!-- Product 4 -->
+
+ <div class="product-card">
+  <img src="image/AKASH4.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <a href="buy-now.html?image=image/AKASH4.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <a href="image/AKASH4.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+ <!-- Add to Cart Button -->
+  <button onclick="addToCart('Classic Brown Loafers', 'image/AKASH4.jpg', 999)" 
+          style="background-color: #27ae60; color: white; padding: 8px 12px; border-radius: 6px; border: none; cursor: pointer;">
+    Add to Cart
+  </button>
+
+</div>
+<!-- Product 5 -->
+
+ <div class="product-card">
+  <img src="image/AKASH5.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <a href="buy-now.html?image=image/AKASH5.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <a href="image/AKASH5.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+</div>
+<!-- Product 6 -->
+
+ <div class="product-card">
+  <img src="image/AKASH6.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <a href="buy-now.html?image=image/AKASH6.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <a href="image/AKASH6.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+</div>
+<!-- Product 7 -->
+
+ <div class="product-card">
+  <img src="image/AKASH7.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <a href="buy-now.html?image=image/AKASH7.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <a href="image/AKASH7.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+</div>
+<!-- Product 8 -->
+
+ <div class="product-card">
+  <img src="image/AKASH8.jpg" alt="Loafers">
+  <h3>Classic Brown Loafers</h3>
+  <p>Comfortable daily wear with soft lining and leather touch.</p>
+
+  <a href="buy-now.html?image=image/AKASH8.jpg&name=Classic%20Brown%20Loafers&price=999" 
+     target="_blank" 
+     style="background-color: #e74c3c; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    Buy Now
+  </a>
+
+  <a href="image/AKASH8.jpg" 
+     target="_blank" 
+     style="background-color: #444; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; display: inline-block; margin: 5px;">
+    View Product
+  </a>
+</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Emil Fashion</h2>
+    <p class="about-text">Emil Fashion is your destination for trendy and elegant women’s footwear. We deliver across Bangladesh with fast service and excellent quality.</p>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p>Phone: <strong>0183516387</strong> | Email: info@emilfashion.com</p>
+  </section>
+  <script>
+  // Add product to cart
+  function addToCart(name, image, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Check if product already in cart; if yes, increase quantity
+    const existingIndex = cart.findIndex(p => p.name === name);
+    if (existingIndex > -1) {
+      cart[existingIndex].quantity += 1;
+    } else {
+      cart.push({ name, image, price, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(name + " added to cart!");
+    updateCartIcon();
+  }
+
+  // Update cart icon with number of items
+  function updateCartIcon() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalCount = cart.reduce((acc, product) => acc + product.quantity, 0);
+    const cartIcon = document.getElementById('cart-count');
+    if (cartIcon) {
+      cartIcon.textContent = totalCount > 0 ? totalCount : '';
+    }
+  }
+
+  // Update icon on page load
+  window.onload = updateCartIcon;
+</script>
+
+<script>
+function addToCart(name, image, price) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if this exact product already exists
+  const existingIndex = cart.findIndex(p => p.name === name && p.image === image && p.price === price);
+
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push({ name, image, price, quantity: 1 });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
+
+<script>
+function addToCart(name, image, price) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Check if exact product (by name + image) already exists
+  const existingIndex = cart.findIndex(item =>
+    item.name === name && item.image === image && item.price === price
+  );
+
+  if (existingIndex !== -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push({ name, image, price, quantity: 1 });
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${name} added to cart!`);
+}
+</script>
+
+
+
+  <footer>
+    &copy; 2024 EMIL FASHION. All rights reserved. &nbsp;|&nbsp; 
+    <a href="https://www.facebook.com/profile.php?id=61574600746760" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-facebook-f"></i> Facebook
+    </a>
+    &nbsp;|&nbsp;
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('#menu');
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
+<script>
+  function addToCart(name, image, price) {
+    const product = { name, image, price };
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+  }
+</script>
+
+  
+  <script>
+  function addToCart(name, image, price) {
+    const product = { name, image, price, quantity: 1 };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingIndex = cart.findIndex(item => item.name === name);
+
+    if (existingIndex !== -1) {
+      cart[existingIndex].quantity += 1;
+    } else {
+      cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} has been added to your cart.`);
+  }
+</script>
+
+<script src="script.js"></script>
+<script>
+  function addToCart(name, image, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if product already exists
+    const existingProduct = cart.find(item => item.name === name && item.image === image);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({ name, image, price, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+</script>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Your Cart - Emil Fashion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+  }
+  .cart-item {
+    display: flex;
+    gap: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    align-items: center;
+    background: #f9f9f9;
+  }
+  .cart-item img {
+    width: 120px;
+    height: auto;
+    border-radius: 5px;
+  }
+  .cart-details {
+    flex-grow: 1;
+  }
+  .cart-details h3 {
+    margin: 0 0 10px;
+    color: #444;
+  }
+  .cart-details p {
+    margin: 6px 0;
+  }
+  label {
+    margin-right: 10px;
+  }
+  select, input[type=number], input[type=text], input[type=tel] {
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  .summary {
+    margin-top: 30px;
+    border-top: 2px solid #333;
+    padding-top: 20px;
+  }
+  .summary label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .summary input, .summary select {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  button, .remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .remove-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  #order-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eef;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Your Cart</h1>
+<div id="cart-container"></div>
+
+<div class="summary">
+  <label for="delivery">Delivery Option:</label>
+  <select id="delivery">
+    <option value="80">Dhaka inside (80 TK)</option>
+    <option value="150">Dhaka outside (150 TK)</option>
+  </select>
+
+  <label for="customer-name">Name:</label>
+  <input type="text" id="customer-name" placeholder="Your full name" />
+
+  <label for="customer-address">Address:</label>
+  <input type="text" id="customer-address" placeholder="Your address" />
+
+  <label for="customer-phone">Phone Number:</label>
+  <input type="tel" id="customer-phone" placeholder="Your phone number" />
+
+  <button id="confirm-btn">Confirm Order</button>
+</div>
+
+<div id="order-summary"></div>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function renderCart() {
+    const container = document.getElementById('cart-container');
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-details">
+          <h3>${index + 1}. ${item.name}</h3>
+          <p>Price: ${item.price} TK</p>
+          <label>Quantity:
+            <input type="number" min="1" max="10" value="${item.quantity}" data-index="${index}" class="quantity-input" />
+          </label>
+          <label>Size:
+            <select data-index="${index}" class="size-select">
+              ${generateSizeOptions(item.size)}
+            </select>
+          </label>
+          <p>Total: <span class="total-price">${item.price * item.quantity}</span> TK</p>
+          <button class="remove-btn" data-index="${index}">Remove</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    // Set event listeners after rendering
+    setEventListeners();
+  }
+
+  function generateSizeOptions(selectedSize) {
+    let sizes = [];
+    for(let i=35; i<=43; i++) {
+      sizes.push(`<option value="${i}" ${selectedSize == i ? 'selected' : ''}>${i}</option>`);
+    }
+    return sizes.join('');
+  }
+
+  function setEventListeners() {
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        const idx = this.getAttribute('data-index');
+        let val = parseInt(this.value);
+        if (val < 1) val = 1;
+        if (val > 10) val = 10;
+        this.value = val;
+        cart[idx].quantity = val;
+        updateLocalStorage();
+        updateTotalPrice(idx);
+      });
+    });
+
+    const sizeSelects = document.querySelectorAll('.size-select');
+    sizeSelects.forEach(select => {
+      select.addEventListener('change', function() {
+        const idx = this.getAttribute('data-index');
+        cart[idx].size = this.value;
+        updateLocalStorage();
+      });
+    });
+
+    const removeButtons = document.querySelectorAll('.remove-btn');
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const idx = this.getAttribute('data-index');
+        cart.splice(idx, 1);
+        updateLocalStorage();
+        renderCart();
+      });
+    });
+  }
+
+  function updateTotalPrice(index) {
+    const cartItem = document.querySelectorAll('.cart-item')[index];
+    if (!cartItem) return;
+    const totalPriceElem = cartItem.querySelector('.total-price');
+    const total = cart[index].price * cart[index].quantity;
+    totalPriceElem.textContent = total;
+  }
+
+  function updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  document.getElementById('confirm-btn').addEventListener('click', () => {
+    const name = document.getElementById('customer-name').value.trim();
+    const address = document.getElementById('customer-address').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    const deliveryFee = parseInt(document.getElementById('delivery').value);
+
+    if (!name || !address || !phone) {
+      alert('Please fill all customer details.');
+      return;
+    }
+
+    if(cart.length === 0){
+      alert("Your cart is empty.");
+      return;
+    }
+
+    // Calculate total price of cart
+    let cartTotal = 0;
+    cart.forEach(item => {
+      cartTotal += item.price * item.quantity;
+    });
+    const grandTotal = cartTotal + deliveryFee;
+
+    // Show order summary
+    let summaryHTML = `<h2>Order Summary</h2>`;
+    summaryHTML += `<p><strong>Name:</strong> ${name}</p>`;
+    summaryHTML += `<p><strong>Address:</strong> ${address}</p>`;
+    summaryHTML += `<p><strong>Phone:</strong> ${phone}</p>`;
+    summaryHTML += `<p><strong>Delivery Fee:</strong> ${deliveryFee} TK</p>`;
+    summaryHTML += `<p><strong>Products:</strong></p> <ul>`;
+    cart.forEach(item => {
+      summaryHTML += `<li>${item.name} - Size: ${item.size || 'N/A'}, Quantity: ${item.quantity}, Price: ${item.price * item.quantity} TK</li>`;
+    });
+    summaryHTML += `</ul>`;
+    summaryHTML += `<h3>Total Price: ${grandTotal} TK</h3>`;
+
+    document.getElementById('order-summary').innerHTML = summaryHTML;
+  });
+
+  // Initial render
+  renderCart();
+</script>
+
+</body>
+</html>
